@@ -12,3 +12,80 @@
     height: 100vh;
     background-color: #FFDCFD;
 }
+
+.envelope-wrapper {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.envelope {
+    width: 824px;
+    height: 588px;
+    border-top: 300px solid transparent;
+    border-left: 412px solid #F7F7F7;
+    border-right: 412px solid #F7F7F7;
+    border-bottom: 294px solid #F7F7F7;
+    position: relative;
+    z-index: 1;
+}
+
+.flap-wrapper {
+    width: fit-content;
+    height: fit-content;
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 412px solid transparent;
+    border-right: 412px solid transparent;
+    border-top: 350px solid #E3E3E3;
+    transform-origin: top center;
+    transition: transform 0.6s ease;
+    z-index: 1;
+}
+
+.envelope-wrapper.open .flap {
+    transform: rotateX(180deg);
+    z-index: 0;
+    transition: transform 0.6s ease, z-index 0s;
+}
+
+.letter {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+.envelope-wrapper.open .letter {
+    transform: translate(-50%, -100px);
+    z-index: 0;
+    transition: transform 0.6s ease, z-index 0s;
+}
+
+.front-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 412px solid transparent;
+    border-right: 412px solid transparent;
+    border-top: 350px solid #D9D9D9;
+    z-index: -1;
+}
