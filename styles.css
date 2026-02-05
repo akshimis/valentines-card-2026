@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'MinecraftFont';
-    src: url('fonts/Minecraftia.ttf') format('truetype');
-    /* Add other formats like .woff2 or .woff for broader browser support */
+    src: url('./fonts/MinecraftRegular-Bmg3.otf') format('truetype');
 }
 
 * {
