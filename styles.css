@@ -64,12 +64,14 @@ body {
     z-index: 2;
 }
 
-.heart-icon {
+.heart-sticker {
     position: absolute;
     left: 50%;
+    top: -20px;
     width: 80px;
     transform: translateX(-55%);
     z-index: 3;
+    cursor: pointer;
 }
 
 .envelope-wrapper.open {
@@ -113,7 +115,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: default;
+    cursor: pointer;
+}
+
+.click {
+    font-size: 10px;
+    color: red;
+    position: relative;
+    top: -20px;
+    animation: throb 1.5s infinite;
+    opacity: 100%;
 }
 
 .letter-content {
@@ -133,6 +144,11 @@ body {
     transform: scale(1.5);
     transition: transform 0.6s ease;
     z-index: 10;
+    cursor: default;
+}
+
+.letter-container.show .click {
+    opacity: 0%;
 }
 
 .avatar-a {
