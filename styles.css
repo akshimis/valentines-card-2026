@@ -1,7 +1,17 @@
+@font-face {
+    font-family: 'MinecraftFont';
+    src: url('fonts/minecraftia.ttf') format('truetype');
+    /* Add other formats like .woff2 or .woff for broader browser support */
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'MinecraftFont', sans-serif;
 }
 
 .container {
@@ -9,8 +19,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     height: 100vh;
-    background-color: #FFDCFD;
+    background-color: #9AB595;
+    padding: 800px 0;
+    overflow: hidden;
 }
 
 .envelope-wrapper {
@@ -24,11 +37,12 @@
     width: 824px;
     height: 588px;
     border-top: 300px solid transparent;
-    border-left: 412px solid #F7F7F7;
-    border-right: 412px solid #F7F7F7;
-    border-bottom: 294px solid #F7F7F7;
+    border-left: 412px solid #F8F3E9;
+    border-right: 412px solid #F8F3E9;
+    border-bottom: 294px solid #F8F3E9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .flap-wrapper {
@@ -44,38 +58,104 @@
     height: 0;
     border-left: 412px solid transparent;
     border-right: 412px solid transparent;
-    border-top: 350px solid #E3E3E3;
+    border-top: 350px solid #F6E9D0;
     transform-origin: top center;
     transition: transform 0.6s ease;
-    z-index: 1;
+    z-index: 2;
+}
+
+.heart-icon {
+    position: absolute;
+    left: 50%;
+    width: 80px;
+    transform: translateX(-55%);
+    z-index: 3;
+}
+
+.envelope-wrapper.open {
+    cursor: default;
 }
 
 .envelope-wrapper.open .flap {
     transform: rotateX(180deg);
-    z-index: 0;
+    z-index: 1;
     transition: transform 0.6s ease, z-index 0s;
 }
 
-.letter {
+.letter-container {
     position: absolute;
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
+    transition: transform 0.6s ease;
+    z-index: 0;
+}
+
+.envelope-wrapper.open .letter-container {
+    transform: translate(-50%, -100px);
+    z-index: 1;
+    transition: transform 0.6s ease, z-index 0s;
+    cursor: default;
+}
+
+.letter {
     width: 700px;
     height: 500px;
-    background-color: #FFFFFF;
+    background-color: #FDF8EC;
     border-radius: 10px;
     padding: 40px;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.6s ease;
-    z-index: -1;
+    z-index: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
 }
 
-.envelope-wrapper.open .letter {
-    transform: translate(-50%, -100px);
-    z-index: 0;
-    transition: transform 0.6s ease, z-index 0s;
+.letter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.letter-container.show {
+    z-index: 4 !important;
+}
+
+.letter-container.show .letter {
+    transform: scale(1.5);
+    transition: transform 0.6s ease;
+    z-index: 10;
+}
+
+.avatar-a {
+    max-width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.avatar-l {
+    max-width: 120px;
+    height: auto;
+}
+
+.heart-insert {
+    width: 50px;
+    height: 50px;
+}
+
+.letter-imgs {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 20px;
 }
 
 .front-flap {
@@ -86,6 +166,6 @@
     height: 0;
     border-left: 412px solid transparent;
     border-right: 412px solid transparent;
-    border-top: 350px solid #D9D9D9;
-    z-index: -1;
+    border-top: 350px solid #F6E9D0;
+    z-index: 0;
 }
