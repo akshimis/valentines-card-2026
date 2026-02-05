@@ -21,4 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
   froggyModal.addEventListener('click', () => {
     froggyModal.classList.remove('open');
   });
+
+  // close letter when clicking outside
+  document.addEventListener('click', (e) => {
+    if (letterContainer.classList.contains('show') && !letterContainer.contains(e.target)) {
+      letterContainer.classList.remove('show');
+    }
+  });
 });
